@@ -22,9 +22,9 @@ WORKERS = [
     {"key": "pydantic", "name": "Pydantic AI", "colour": "green", "file": "strands_pydantic/pydantic_worker.py", "runner": "python"},
     {"key": "maf", "name": "Microsoft Agent Framework", "colour": "magenta", "file": "maf_agno/maf_worker.py", "runner": "python"},
     {"key": "agno", "name": "Agno", "colour": "yellow", "file": "maf_agno/agno_worker.py", "runner": "python"},
-    """
-    Skipped Mastra 
-    """
+    # """
+    # Skipped Mastra
+    # """
     # {"key": "mastra", "name": "Mastra", "colour": "blue", "file": "mastra/worker.ts", "runner": "node"},
 ]
 
