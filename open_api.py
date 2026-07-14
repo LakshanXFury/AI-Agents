@@ -4,7 +4,9 @@ load_dotenv(override=True)
 
 openai = OpenAI()
 
-messages = [{"role": "user", "content": "What is 2+2?"}]
+# messages = [{"role": "user", "content": "What is 2+2?"}]
+input_data = input("Ask any question that you need answer for : ")
+messages = [{"role": "user", "content": input_data}]
 
 response = openai.chat.completions.create(
     model="gpt-4o-mini",  # ✅ Valid model name
