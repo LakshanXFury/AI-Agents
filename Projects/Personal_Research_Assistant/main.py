@@ -1,7 +1,9 @@
-from agents import Agent, Runner, trace, WebSearchTool
-from agents.mcp import MCPServerStdio  
+from agents import Agent, Runner, trace
 import asyncio
 from dotenv import load_dotenv
+from mcp_file import research_mcp
+
+
 load_dotenv(override=True)
 
 
@@ -22,21 +24,16 @@ Sources: Source 1; Source 2
 
 """
 
-# MCP's
-
-fetch_params = {"command": "mcp-server-fetch", "args": []}
-playwright_params = {
-    "command": "npx",
-    "args": ["@playwright/mcp@latest"]
-}
 
 
 async def main():
 
     input_data = input("Ask any question that you need answer for : ")
-    async with MCPServerStdio(params=fetch_params, client_session_timeout_seconds=60) as fetch_server:
-        async with MCPServerStdio(params=playwright_params, client_session_timeout_seconds=60) as playwright_server: 
 
+    servers = research_mcp()
+
+    async with servers[0] as fetch_server:
+        async with servers[1] as playwright_server: 
             agent = Agent(
                 name="Research Assistant",
                 instructions=instructions,
@@ -45,15 +42,12 @@ async def main():
                 model="gpt-4o-mini",
             )
 
-            with trace("Personal Research Assistant"):
+            with trace(f"Personal Research Assistant"):
                 result = await Runner.run(agent, input_data, max_turns=20)
                 print(result.final_output)
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-
-
 
 
 
