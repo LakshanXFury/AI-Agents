@@ -1,6 +1,6 @@
 import asyncio
 from dotenv import load_dotenv
-from agents import Runner, trace
+from agents import Runner, trace, Agent
 from agents_def.planner import planner_agent
 
 
