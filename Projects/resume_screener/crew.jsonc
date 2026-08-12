@@ -173,7 +173,10 @@
       "agent": "interview_question_writer",
 
       // Task outputs used as context
-      "context": ["compare_the_parsed_candidate_task", "score_the_candidates_fit_task"]
+      "context": ["compare_the_parsed_candidate_task", "score_the_candidates_fit_task"],
+
+      // Place to output the data.
+      "output_file": "output/questions.md"
 
       // "tools": [],
       // "human_input": false,

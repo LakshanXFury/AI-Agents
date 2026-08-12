@@ -8,5 +8,6 @@ dependencies = [
     "mcp==1.26.0",
     "mcp-server-fetch==2025.1.17",
     "openai-agents>=0.19.2",
+    "pypdf>=6.15.0",
     "python-dotenv>=1.2.2",
 ]
