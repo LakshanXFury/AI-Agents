@@ -11,8 +11,10 @@ load_dotenv(override=True)
 instructions = "You are able to answer the given question and also make sure to send push notification of the final result"
 model="gpt-5.4-mini"
 
+pushover_mcp_path = "MCP/Pushover_MCP/pushover_fn.py"
+
 async def mcp_server():
-    params = {"command": "uv", "args": ["run", "MCP/Pushover_MCP/pushover_fn.py"]}
+    params = {"command": "uv", "args": ["run", pushover_mcp_path]}
     async with MCPServerStdio(params=params, client_session_timeout_seconds=30) as server:
         mcp_tools = await server.list_tools()
         print(mcp_tools)
@@ -21,7 +23,7 @@ async def mcp_server():
 async def main():
 
     input_data = input("Ask any question that you need answer for : ")
-    params = {"command": "uv", "args": ["run", "MCP/Pushover_MCP/pushover_fn.py"]}
+    params = {"command": "uv", "args": ["run", pushover_mcp_path]}
 
     async with MCPServerStdio(params=params, client_session_timeout_seconds=30) as mcp_server:
         agent = Agent(name="Researcher", instructions=instructions, model=model, mcp_servers=[mcp_server])

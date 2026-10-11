@@ -1,0 +1,7 @@
+LangGraph is a framework for building stateful, multi-step applications with language models. 
+
+A graph consists of nodes and edges. 
+
+Nodes perform actions 
+
+Edges determine how execution moves between nodes.
