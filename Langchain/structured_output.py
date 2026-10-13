@@ -20,5 +20,14 @@ structured_llm = llm.with_structured_output(Company)
 company = structured_llm.invoke("Tell me about Google Technology Company")
 
 
+
 print(company)
 print(company.ticker)
+
+
+company2 = structured_llm.stream("Tell me about Apple Technology Company")
+
+for chunk in company2:
+    print(chunk.name)
+    print(chunk.ticker)
+    print(chunk.founded_year)
